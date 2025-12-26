@@ -1,0 +1,31 @@
+{% extends "portfolio_app/base.html" %}
+{% block title %}Projects - My Portfolio{% endblock %}
+{% block content %}
+<h1 class="mb-4">My Projects</h1>
+<div class="row">
+    {% for project in projects %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            {% if project.image %}
+            <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}" style="height: 200px; object-fit: cover;">
+            {% else %}
+            <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height: 200px;">
+                <span class="text-white">No Image</span>
+            </div>
+            {% endif %}
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">{{ project.title }}</h5>
+                <p class="card-text flex-grow-1">{{ project.description }}</p>
+                {% if project.link %}
+                <a href="{{ project.link }}" class="btn btn-primary mt-auto" target="_blank">View Project</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <p>No projects yet. <a href="/admin/portfolio_app/project/add/">Add some via Admin</a>!</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

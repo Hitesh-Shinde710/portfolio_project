@@ -1,0 +1,50 @@
+{% extends "portfolio_app/base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Contact - My Portfolio{% endblock %}
+{% block content %}
+<h1 class="mb-4">Get In Touch</h1>
+<p class="lead">Have a project idea or just want to say hi? I'd love to hear from you!</p>
+<div class="row">
+    <div class="col-md-8">
+        <form method="post" id="contact-form">
+            {% csrf_token %}
+            {{ form|crispy }}
+        </form>
+    </div>
+    <div class="col-md-4">
+        <h5>Or Reach Me At</h5>
+        <ul class="list-unstyled">
+            <li><strong>Email:</strong> Hshinde710@gmail.com</li>
+            <li><strong>Phone:</strong> +91-8087123157</li>
+            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/hitesh-shinde-711775362?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">Connect</a></li>
+            <li><strong>GitHub:</strong> <a href="https://github.com/yourusername" target="_blank">Follow</a></li>
+        </ul>
+    </div>
+</div>
+<script>
+    // AJAX form submit (in base.html already, but ensure it works)
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('contact-form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                fetch('', {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Message sent! Thanks for reaching out.');
+                        form.reset();
+                    } else {
+                        alert('Error: ' + JSON.stringify(data.errors));
+                    }
+                })
+                .catch(error => alert('Submission failed: ' + error));
+            });
+        }
+    });
+</script>
+{% endblock %}

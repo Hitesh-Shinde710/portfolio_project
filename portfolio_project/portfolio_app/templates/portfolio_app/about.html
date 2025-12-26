@@ -1,0 +1,51 @@
+{% extends "portfolio_app/base.html" %}
+{% block title %}About - My Portfolio{% endblock %}
+{% block content %}
+
+<div class="row">
+    <div class="col-md-8">
+        <h1 class="mb-4">About Me</h1>
+        <p class="lead">Hi, I'm Hitesh Shinde, a full-stack developer passionate about creating intuitive web applications that solve real-world problems. With a strong foundation in Python and Django, I love turning ideas into scalable, user-friendly products.</p>
+        <p>Whether it's building e-commerce platforms, data dashboards, or personal projects, I thrive on clean code, modern design, and continuous learning. Outside of coding, you'll find me exploring new tech trends, hiking, or contributing to open-source communities.</p>
+    </div>
+    <div class="col-md-4">
+        {% comment %} <img src="https://via.placeholder.com/300x300?text=Your+Photo" alt="Profile Photo" class="img-fluid rounded-circle mb-3"> {% endcomment %}
+        <h5>Quick Facts</h5>
+        <ul class="list-unstyled">
+            <li><strong>Location:</strong> Pune, Maharashtra</li>
+            <li><strong>Freelance:</strong> Available</li>
+            <li><strong>GitHub:</strong> <a href="https://github.com/yourusername" target="_blank">@Hitesh-Shinde710</a></li>
+            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/hitesh-shinde-711775362?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">Hitesh Shinde</a></li>
+        </ul>
+    </div>
+</div>
+<div class="row mt-5">
+    <div class="col-md-6">
+        <h3>Education</h3>
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-title">Bachelor of Business Administration in Computer Application</h6>
+                <p class="card-text">Savitribai Phule Pune University, [2024]</p>
+                <p class="small text-muted">Relevant Coursework: Web Development, Data Structures, Algorithms</p>
+            </div>
+        </div>
+    </div>
+    {% comment %} <div class="col-md-6">
+        <h3>Experience</h3>
+        <div class="card mb-3">
+            <div class="card-body">
+                <h6 class="card-title">Senior Developer, Tech Corp</h6>
+                <p class="card-text small">2020 - Present</p>
+                <p class="card-text">Led development of 5+ Django apps; optimized performance by 40%.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-title">Junior Developer, Startup Inc</h6>
+                <p class="card-text small">2018 - 2020</p>
+                <p class="card-text">Built MVP for user auth system using Flask & React.</p>
+            </div>
+        </div>
+    </div> {% endcomment %}
+</div>
+{% endblock %}
