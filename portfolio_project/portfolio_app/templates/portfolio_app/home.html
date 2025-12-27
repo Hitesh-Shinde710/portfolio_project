@@ -1,45 +1,76 @@
 {% extends "portfolio_app/base.html" %}
 {% load static %}
 {% block title %}Home - My Portfolio{% endblock %}
+
 {% block content %}
-<div class="hero text-white text-center p-5 rounded">
+
+<!-- HERO SECTION -->
+<div class="hero text-white text-center p-5 rounded mb-5"
+     style="background: linear-gradient(135deg, #0d6efd, #0b5ed7);">
+
     <img
         src="{% static 'portfolio_app/images/profile.jpg' %}"
         alt="Hitesh Shinde"
-        class="rounded-circle mb-4"
+        class="rounded-circle mb-4 shadow"
         width="160"
+        height="160"
     >
 
-    <h1 class="display-4 fw-bold">Welcome to My Portfolio</h1>
-    <p class="lead">I'm a passionate developer creating amazing things with Python, Django, and more. Let's build something great together!</p>
-    <a href="{% url 'projects' %}" class="btn btn-primary btn-lg">View My Projects</a>
+    <h1 class="display-4 fw-bold">Hitesh Shinde</h1>
+    <p class="lead mb-4">
+        Full-Stack Django Developer building secure, scalable, and user-focused web applications.
+    </p>
+
+    <a href="{% url 'projects' %}" class="btn btn-light btn-lg me-2">
+        View Projects
+    </a>
+    <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg">
+        Contact Me
+    </a>
 </div>
+
+<!-- SUMMARY SECTION -->
+<div class="row text-center mb-5">
+    <div class="col-md-4">
+        <h5 class="fw-bold">Backend Focused</h5>
+        <p class="text-muted">
+            Python, Django, REST APIs, authentication, background tasks, and database design.
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h5 class="fw-bold">Frontend Aware</h5>
+        <p class="text-muted">
+            Clean UI using HTML, CSS, Bootstrap, JavaScript, and React integration.
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h5 class="fw-bold">Production Mindset</h5>
+        <p class="text-muted">
+            Version control, deployment readiness, security practices, and performance optimization.
+        </p>
+    </div>
+</div>
+
+<!-- PROJECTS PREVIEW -->
 <div class="row">
-    <div class="col-md-4">
-        <h3>About Me</h3>
-        <p>Aspiring Python Django developer with hands-on experience in backend development, REST APIs, and database management. Passionate about building efficient, secure web applications and eager to apply my skills in a real-world environment.</p>
-    </div>
-    <div class="col-md-4">
-        <h3>Skills</h3>
-        <ul class="list-unstyled">
-            
-            <li><strong>Backend:</strong> Python, Django, Flask</li>
-            <li><strong>Frontend:</strong> HTML, CSS, JavaScript, Bootstrap, React</li>
-            <li><strong>Tools:</strong> Git, VS Code, MySQL/PostgreSQL</li>
-        </ul>
-    </div>
-    <div class="col-md-4">
-    <h3>Featured Projects</h3>
-    {% for project in projects %}
-    <div class="card mb-3 border-0 bg-light">
-        <div class="card-body py-2">
-            <h6 class="card-title mb-1">{{ project.title }}</h6>
-            <p class="card-text small mb-0">{{ project.description|truncatewords:8 }}</p>
-        </div>
-        </div>
+    <div class="col-md-12">
+        <h3 class="mb-4 text-center">Featured Projects</h3>
+
+        {% for project in projects %}
+            <div class="card mb-3 border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title mb-1">{{ project.title }}</h5>
+                    <p class="card-text text-muted mb-2">
+                        {{ project.description|truncatewords:18 }}
+                    </p>
+                </div>
+            </div>
         {% empty %}
-            <p class="small text-muted">No projects yet—add via admin!</p>
-    {% endfor %}
+            <p class="text-center text-muted">
+                No projects yet — add some from the admin panel.
+            </p>
+        {% endfor %}
     </div>
 </div>
+
 {% endblock %}
