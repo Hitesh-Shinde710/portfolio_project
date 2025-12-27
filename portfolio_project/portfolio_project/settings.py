@@ -131,3 +131,6 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'Hshinde710@gmail.com'
 EMAIL_HOST_PASSWORD = 'your-app-password'
 DEFAULT_FROM_EMAIL = 'Hshinde710@gmail.com'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
